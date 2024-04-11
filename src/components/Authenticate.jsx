@@ -22,6 +22,9 @@ export default function Authenticate({token}){
 
             if(json.success){
                 setSuccessMessage(json.message);
+                setError(null);
+            } else{
+                setError("Cannot Authenticate");
             }
             
         }

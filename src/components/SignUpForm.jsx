@@ -4,6 +4,7 @@ export default function SignUpForm ({setToken}){
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [signUp, setSignUp] = useState(null);
     const [error, setError] = useState(null);
   
     const API = "https://fsa-jwt-practice.herokuapp.com"
@@ -26,10 +27,14 @@ export default function SignUpForm ({setToken}){
             console.log(json);
 
             setToken(json.token);
+            setUsername("");
+            setPassword("");
+            setSignUp("Successfully Signed Up");
 
 
         } catch(error){
             setError(error.message);
+            setSignUp(null);
         }
 
     }
@@ -47,6 +52,7 @@ export default function SignUpForm ({setToken}){
                 </label>
                 <button>Submit</button>
             </form>
+            {signUp ? <p>Thank you for signing up</p> : ""}
         </>
     );
 }
